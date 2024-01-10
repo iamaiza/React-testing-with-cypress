@@ -1,24 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import SideNav from "./components/SideNav/SideNav"
+import Habit from "./components/Habit/Habit"
+import Accomplishments from "./components/Accomplishment/Accomplishment"
+// import Rewards from "./components/Rewards/Rewards"
+import Elements from "./components/Elements/Elements"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className='App'>
+        <div className='App-container'>
+          <SideNav />
+          <Routes>
+            <Route exact path='/habits' element={<Habit />} />
+            <Route exact path='/accomplishments' element={<Accomplishments />} />
+            {/* <Route strict exact path="/rewards" element={<Rewards />} /> */}
+            <Route exact path='/elements' element={<Elements />} />
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
